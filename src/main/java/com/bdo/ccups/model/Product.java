@@ -24,7 +24,7 @@ public class Product {
     private String description;
 
     // @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true  )
-    // private List<Application> applications= new ArrayList<>();;
+    // private List<Application> applications= new ArrayList<>();
 
 	public String getCode() {
 		return code;

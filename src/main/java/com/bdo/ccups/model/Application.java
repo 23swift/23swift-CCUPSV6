@@ -15,16 +15,12 @@ public class Application {
     
 
 
-
-
-
-
 	public Application(String card_number,String last_name, String first_name, String institution, Product product, String reference_no,
 			boolean merchant) {
 		this.last_name = last_name;
 		this.first_name = first_name;
 		this.institution = institution;
-		this.setProduct(product);
+		this.product=product;
 		this.reference_no = reference_no;
 		this.merchant = merchant;
 		this.card_number=card_number;
@@ -34,7 +30,7 @@ public class Application {
     private String last_name;
     private String first_name;
 	private String institution;
-	@ManyToOne (fetch=FetchType.EAGER)
+	@ManyToOne
 	private Product product;
 	
     private String reference_no;
