@@ -13,23 +13,26 @@ import javax.persistence.ManyToOne;
 public class Application {
    public Application(){}
     
+   public Application(String card_number, String last_name, String first_name, Institution institution,
+   Product product, String reference_no, boolean merchant) {
+this.card_number = card_number;
+this.last_name = last_name;
+this.first_name = first_name;
+this.institution = institution;
+this.product = product;
+this.reference_no = reference_no;
+this.merchant = merchant;
+}
 
 
-	public Application(String card_number,String last_name, String first_name, String institution, Product product, String reference_no,
-			boolean merchant) {
-		this.last_name = last_name;
-		this.first_name = first_name;
-		this.institution = institution;
-		this.product=product;
-		this.reference_no = reference_no;
-		this.merchant = merchant;
-		this.card_number=card_number;
-	}
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 	private String card_number;
     private String last_name;
     private String first_name;
-	private String institution;
+	
+	@ManyToOne
+	private Institution institution;
+	
 	@ManyToOne
 	private Product product;
 	
@@ -51,13 +54,6 @@ public class Application {
 		this.first_name = first_name;
 	}
 
-	public String getInstitution() {
-		return institution;
-	}
-
-	public void setInstitution(String institution) {
-		this.institution = institution;
-	}
 
 	
 
@@ -104,5 +100,15 @@ public class Application {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	public Institution getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
+	}
+
+	
 
 }

@@ -14,14 +14,14 @@ public class Product {
     public Product(){
 
     }
-    public Product(String code, String description) {
+    public Product(String code, String name) {
 		this.code = code;
-		this.description = description;
+		this.name = name;
     }
     
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     private String code;
-    private String description;
+    private String name;
 
     // @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true  )
     // private List<Application> applications= new ArrayList<>();
@@ -32,11 +32,19 @@ public class Product {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
     
