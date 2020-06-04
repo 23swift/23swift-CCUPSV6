@@ -43,7 +43,7 @@ public class DatabaseLoader implements CommandLineRunner {
 			"0002","BDO PLATINUM"
 		));
 		
-		this.appRepo.save(new Application("1111111022","Costamero","ARnold",prod,inst,"00001",true));
+		this.appRepo.save(new Application("1111111022","Costamero","ARnold",inst,prod,"00001",true));
 		this.repository.save(new Employee("Frodo", "Baggins", "ring bearer",Date.valueOf("2019-01-26")));
 	}
 }

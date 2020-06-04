@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
-  <copy todir="/Users/arnold/Documents/RndCCUPS/ccups/target/classes/public">
-    <fileset dir="/Users/arnold/Documents/RndCCUPS/ccups/frontend/build"/>
+  <copy todir="C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\target/classes/public">
+    <fileset dir="C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6/frontend/build"/>
   </copy>
 </target>
 </project>

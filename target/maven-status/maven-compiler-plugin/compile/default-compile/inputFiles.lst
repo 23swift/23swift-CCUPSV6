@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/arnold/Documents/RndCCUPS/ccups/src/main/java/com/bdo/ccups/repo/ApplicationRepository.java
 /Users/arnold/Documents/RndCCUPS/ccups/src/main/java/com/bdo/ccups/repo/InstitutionRepository.java
 /Users/arnold/Documents/RndCCUPS/ccups/src/main/java/com/bdo/ccups/model/Employee.java
@@ -10,3 +11,14 @@
 /Users/arnold/Documents/RndCCUPS/ccups/src/main/java/com/bdo/ccups/repo/ProductRepository.java
 /Users/arnold/Documents/RndCCUPS/ccups/src/main/java/com/bdo/ccups/model/Application.java
 /Users/arnold/Documents/RndCCUPS/ccups/src/main/java/com/bdo/ccups/ServletInitializer.java
+=======
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\ServletInitializer.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\model\Application.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\repo\ProductRepository.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\model\Employee.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\repo\ApplicationRepository.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\DatabaseLoader.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\repo\EmployeeRepository.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\CcupsApplication.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\backend\ccupsv6\src\main\java\com\bdo\ccups\model\Product.java
+>>>>>>> eb1fbb171603bb94303aa5b1d6410892b58a098a
