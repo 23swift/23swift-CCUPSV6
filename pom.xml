@@ -75,7 +75,7 @@
 
 			
 
-			<plugin>
+			<!-- <plugin>
 			<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 				<execution>
@@ -92,7 +92,7 @@
 				</goals>
 				</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 

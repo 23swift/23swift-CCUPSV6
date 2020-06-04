@@ -14,31 +14,36 @@ public class Application {
    public Application(){}
     
 
+   public Application(String card_number, String last_name, String first_name,  Product product,
+   Institution institution, String reference_no, boolean merchant) {
+this.card_number = card_number;
+this.last_name = last_name;
+this.first_name = first_name;
+this.setInstitution(institution); 
+this.product = product;
+
+this.reference_no = reference_no;
+this.merchant = merchant;
+}
 
 
 
 
 
-	public Application(String card_number,String last_name, String first_name, String institution, Product product, String reference_no,
-			boolean merchant) {
-		this.last_name = last_name;
-		this.first_name = first_name;
-		this.institution = institution;
-		this.setProduct(product);
-		this.reference_no = reference_no;
-		this.merchant = merchant;
-		this.card_number=card_number;
-	}
+	
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 	private String card_number;
     private String last_name;
     private String first_name;
-	private String institution;
+	
 	@ManyToOne (fetch=FetchType.EAGER)
 	private Product product;
+	@ManyToOne (fetch=FetchType.EAGER)
+	private Institution institution;
 	
-    private String reference_no;
-    private boolean merchant;
+	private String reference_no;
+	private boolean merchant;
+	
 	public String getLast_name() {
 		return last_name;
 	}
@@ -55,15 +60,6 @@ public class Application {
 		this.first_name = first_name;
 	}
 
-	public String getInstitution() {
-		return institution;
-	}
-
-	public void setInstitution(String institution) {
-		this.institution = institution;
-	}
-
-	
 
 	public String getReference_no() {
 		return reference_no;
@@ -108,5 +104,14 @@ public class Application {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	public Institution getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
+	}
+
 
 }
