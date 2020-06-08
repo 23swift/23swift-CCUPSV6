@@ -22,28 +22,29 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final EmployeeRepository repository;
 	private final ApplicationRepository appRepo;
 	private final ProductRepository productRepo;
-	private final InstitutionRepository InsRepo;
+	private final InstitutionRepository instRepo;
 	@Autowired 
-	public DatabaseLoader(EmployeeRepository repository,ApplicationRepository appRepo,ProductRepository productRepo,InstitutionRepository InsRepo) {
+	public DatabaseLoader(EmployeeRepository repository,ApplicationRepository appRepo,ProductRepository productRepo,InstitutionRepository instRepo) {
 		this.repository = repository;
 		this.appRepo=appRepo;
 		this.productRepo=productRepo;
-		this.InsRepo=InsRepo;
+		this.instRepo=instRepo;
+
 	}
 
 	@Override
 	public void run(String... strings) throws Exception { 
-		Institution inst= this.InsRepo.saveAndFlush(new Institution("SMART", "0001", "0000002"));
-		
-		
+	Institution inst=	this.instRepo.saveAndFlush(new Institution("SMART", "1000", "0000001"));
+	this.instRepo.saveAndFlush(new Institution("MERALCO", "1002", "0000002"));
+
 	 Product prod=	this.productRepo.save(new Product(
-			"0001","BDO GOLD"
+			"0001","SMART GOLD"
 		));
 		this.productRepo.save(new Product(
-			"0002","BDO PLATINUM"
+			"0002","SMART PLATINUM"
 		));
 		
-		this.appRepo.save(new Application("1111111022","Costamero","ARnold",inst,prod,"00001",true));
+		this.appRepo.save(new Application("1111111022","Costamero","ARnold",prod,inst,"00001",true,19));
 		this.repository.save(new Employee("Frodo", "Baggins", "ring bearer",Date.valueOf("2019-01-26")));
 	}
 }

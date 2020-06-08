@@ -13,31 +13,38 @@ import javax.persistence.ManyToOne;
 public class Application {
    public Application(){}
     
-   public Application(String card_number, String last_name, String first_name, Institution institution,
-   Product product, String reference_no, boolean merchant) {
-this.card_number = card_number;
-this.last_name = last_name;
-this.first_name = first_name;
-this.institution = institution;
-this.product = product;
-this.reference_no = reference_no;
-this.merchant = merchant;
-}
+
+  
+
+public Application(String card_number, String last_name, String first_name, Product product,
+			Institution institution, String reference_no, boolean merchant, int card_product) {
+		this.card_number = card_number;
+		this.last_name = last_name;
+		this.first_name = first_name;
+		this.product = product;
+		this.institution = institution;
+		this.reference_no = reference_no;
+		this.merchant = merchant;
+		this.card_product = card_product;
+	}
 
 
+
+
+	
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 	private String card_number;
     private String last_name;
     private String first_name;
 	
-	@ManyToOne
+	@ManyToOne (fetch=FetchType.EAGER)
+	private Product product;
+	@ManyToOne (fetch=FetchType.EAGER)
 	private Institution institution;
 	
-	@ManyToOne
-	private Product product;
-	
-    private String reference_no;
-    private boolean merchant;
+	private String reference_no;
+	private boolean merchant;
+	private int card_product;
 	public String getLast_name() {
 		return last_name;
 	}
@@ -54,8 +61,6 @@ this.merchant = merchant;
 		this.first_name = first_name;
 	}
 
-
-	
 
 	public String getReference_no() {
 		return reference_no;
@@ -107,6 +112,14 @@ this.merchant = merchant;
 
 	public void setInstitution(Institution institution) {
 		this.institution = institution;
+	}
+
+	public int getCard_product() {
+		return card_product;
+	}
+
+	public void setCard_product(int card_product) {
+		this.card_product = card_product;
 	}
 
 	
