@@ -36,6 +36,8 @@ public class DatabaseLoader implements CommandLineRunner {
 	public void run(String... strings) throws Exception { 
 	Institution inst=	this.instRepo.saveAndFlush(new Institution("SMART", "1000", "0000001"));
 	this.instRepo.saveAndFlush(new Institution("MERALCO", "1002", "0000002"));
+	this.instRepo.saveAndFlush(new Institution("GLOBE", "1003", "0000003"));
+	this.instRepo.saveAndFlush(new Institution("PLDT", "1004", "0000004"));
 
 	 Product prod=	this.productRepo.save(new Product(
 			"0001","SMART GOLD"
