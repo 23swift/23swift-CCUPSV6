@@ -13,20 +13,20 @@ import javax.persistence.ManyToOne;
 public class Application {
    public Application(){}
     
+   public Application(String card_number, String last_name, String first_name, String middle_name, Product product,
+   Institution institution, String reference_no, boolean merchant, int card_product) {
+	this.card_number = card_number;
+	this.last_name = last_name;
+	this.first_name = first_name;
+	this.middle_name = middle_name;
+	this.product = product;
+	this.institution = institution;
+	this.reference_no = reference_no;
+	this.merchant = merchant;
+	this.card_product = card_product;
+	}
 
   
-
-public Application(String card_number, String last_name, String first_name, Product product,
-			Institution institution, String reference_no, boolean merchant, int card_product) {
-		this.card_number = card_number;
-		this.last_name = last_name;
-		this.first_name = first_name;
-		this.product = product;
-		this.institution = institution;
-		this.reference_no = reference_no;
-		this.merchant = merchant;
-		this.card_product = card_product;
-	}
 
 
 
@@ -35,7 +35,8 @@ public Application(String card_number, String last_name, String first_name, Prod
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 	private String card_number;
     private String last_name;
-    private String first_name;
+	private String first_name;
+	private String middle_name;
 	
 	@ManyToOne (fetch=FetchType.EAGER)
 	private Product product;
@@ -122,6 +123,23 @@ public Application(String card_number, String last_name, String first_name, Prod
 		this.card_product = card_product;
 	}
 
+	public String getMiddle_name() {
+		return middle_name;
+	}
+
+	public void setMiddle_name(String middle_name) {
+		this.middle_name = middle_name;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 	
 
 }
