@@ -15,17 +15,16 @@ public class Institution {
     
     public Institution() {
 	}
-	public Institution(String name, String code, String merchant_Id) {
-		this.name = name;
-		this.code = code;
-		this.merchant_Id = merchant_Id;
-	}
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     private String code;
     private String merchant_Id;
+
+    @OneToMany
+    private List<Product> products;
     // private String header;
     
     // @OneToMany(
@@ -64,17 +63,45 @@ public class Institution {
         this.code = code;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    public Institution(String name, String code, String merchant_Id,  List<Product> products) {
+        this.name = name;
+        this.code = code;
+        this.merchant_Id = merchant_Id;
+        this.products = products;
+    }
+    public Institution(String name, String code, String merchant_Id) {
+        this.name = name;
+        this.code = code;
+        this.merchant_Id = merchant_Id;
+        
+    }
     // public String getHeader() {
     //     return header;
     // }
+
+    public String getMerchant_Id() {
+        return merchant_Id;
+    }
+
+    public void setMerchant_Id(String merchant_Id) {
+        this.merchant_Id = merchant_Id;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     // public void setHeader(String header) {
     //     this.header = header;

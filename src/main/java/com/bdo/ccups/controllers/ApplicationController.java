@@ -4,7 +4,7 @@ package com.bdo.ccups.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.bdo.ccups.ExceptionHandlers.EntityNotFoundException;
+// import com.bdo.ccups.ExceptionHandlers.EntityNotFoundException;
 import com.bdo.ccups.model.Application;
 import com.bdo.ccups.repo.ApplicationRepository;
 
@@ -25,17 +25,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApplicationController {
 @Autowired
 ApplicationRepository appRepo;
-// 
+
 @GetMapping("applications")
  public List<Application> GetApplications() {
      
      return appRepo.findAll();
  }
  @GetMapping("applications/{id}")
- public Application GetApplicationById(@PathVariable("id") Long id) throws EntityNotFoundException {
+ public Application GetApplicationById(@PathVariable("id") Long id) throws Exception {
      
-     return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
+    //  return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
     //  orElse(throw new EntityNotFoundException(Application.class, "id", id.toString());
+    return appRepo.findById(id).get();
  }
 
  @ResponseStatus(code = HttpStatus.CREATED)

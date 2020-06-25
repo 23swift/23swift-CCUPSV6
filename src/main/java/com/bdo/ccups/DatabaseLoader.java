@@ -1,6 +1,7 @@
 package com.bdo.ccups;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import com.bdo.ccups.model.Employee;
 import com.bdo.ccups.model.Institution;
@@ -34,19 +35,27 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception { 
-	Institution inst=	this.instRepo.saveAndFlush(new Institution("SMART Communications", "1000", "0000001"));
+		Product prod1=	this.productRepo.save(new Product(
+			"0001","SMART GOLD"
+		));
+		Product prod2=this.productRepo.save(new Product(
+			"0002","SMART PLATINUM"
+		));
+		ArrayList<Product> prodList=new ArrayList<Product>();
+		prodList.add(prod1);
+		prodList.add(prod2);
+
+	Institution inst=	this.instRepo.saveAndFlush(new Institution("SMART Communications", "1000", "0000001",
+	
+	prodList));
+
 	this.instRepo.saveAndFlush(new Institution("MERALCO", "1002", "0000002"));
 	this.instRepo.saveAndFlush(new Institution("GLOBE Telecoms", "1003", "0000003"));
 	this.instRepo.saveAndFlush(new Institution("PLDT", "1004", "0000004"));
 
-	 Product prod=	this.productRepo.save(new Product(
-			"0001","SMART GOLD"
-		));
-		this.productRepo.save(new Product(
-			"0002","SMART PLATINUM"
-		));
+	
 		
-		this.appRepo.save(new Application("1111111022","Costamero","ARnold","Belen",prod,inst,"00001",true,19));
-		this.repository.save(new Employee("Frodo", "Baggins", "ring bearer",Date.valueOf("2019-01-26")));
+		this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod1,inst,"00001",true,19));
+		
 	}
 }
