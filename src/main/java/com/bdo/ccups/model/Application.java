@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 // "id":2,"card_number":"3555484527646565","last_name":"Shevelin","first_name":"Kimberley","institution":"Izio","product":"jcb","reference_no":"1987320255","merchant":false
 @Entity
@@ -33,14 +34,17 @@ public class Application {
 
 	
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
+
+	@NotNull
 	private String card_number;
     private String last_name;
 	private String first_name;
 	private String middle_name;
 	
-	@ManyToOne (fetch=FetchType.EAGER)
+	@ManyToOne 
 	private Product product;
-	@ManyToOne (fetch=FetchType.EAGER)
+
+	@ManyToOne  
 	private Institution institution;
 	
 	private String reference_no;
@@ -77,14 +81,6 @@ public class Application {
 
 	public void setMerchant(boolean merchant) {
 		this.merchant = merchant;
-	}
-
-	public String getCard_number() {
-		return card_number;
-	}
-	
-	public void setCard_number(String card_number) {
-		this.card_number = card_number;
 	}
 
 
@@ -137,6 +133,14 @@ public class Application {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCard_number() {
+		return card_number;
+	}
+
+	public void setCard_number(String card_number) {
+		this.card_number = card_number;
 	}
 
 	

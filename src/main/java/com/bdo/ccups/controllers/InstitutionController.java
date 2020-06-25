@@ -14,10 +14,10 @@ public class InstitutionController {
 @Autowired
 InstitutionRepository institutionRepository;
 
-    @GetMapping("institutions")
- public List<Institution> GetApplications() {
-     
-     return institutionRepository.findAll();
- }
+        @GetMapping("institutions")
+     public List<Institution> GetApplications() {
+        
+         return institutionRepository.findAll();
+     }
     
 }

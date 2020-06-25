@@ -24,8 +24,8 @@ public class DropDownController {
     private InstitutionRepository institutionRepo;
 
     @GetMapping("products")
-    public List<Product> getProducts(){
-        List<Product> result = this.productRepo.findAll();
+    public Iterable<Product> getProducts(){
+        Iterable<Product> result = this.productRepo.findAll();
         
         return result;
           

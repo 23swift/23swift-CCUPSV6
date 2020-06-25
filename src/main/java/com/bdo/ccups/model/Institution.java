@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+
+
 @Entity
 public class Institution {
     
@@ -19,13 +22,22 @@ public class Institution {
 		this.name = name;
 		this.code = code;
 		this.merchant_Id = merchant_Id;
-	}
+    }
+    public Institution(String name, String code, String merchant_Id, List<Application> applications) {
+        this.name = name;
+        this.code = code;
+        this.merchant_Id = merchant_Id;
+        this.applications = applications;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String code;
     private String merchant_Id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Application> applications;
     // private String header;
     
     // @OneToMany(
@@ -48,7 +60,7 @@ public class Institution {
 		return merchant_Id;
 	}
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(String merchant_Id) {
 		this.merchant_Id = merchant_Id;
 	}
 
@@ -71,6 +83,16 @@ public class Institution {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public List<Application> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
+
+   
 
     // public String getHeader() {
     //     return header;

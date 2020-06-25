@@ -1,12 +1,13 @@
 package com.bdo.ccups.controllers;
 
 
+import java.lang.reflect.Executable;
 import java.util.List;
 import java.util.Optional;
 
 import com.bdo.ccups.ExceptionHandlers.EntityNotFoundException;
 import com.bdo.ccups.model.Application;
-import com.bdo.ccups.repo.ApplicationRepository;
+import com.bdo.ccups.repo.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,16 +22,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//  @RequestMapping("api")
+//  @RequestMapping("api")                      localhost:8080/api/applications
 public class ApplicationController {
 @Autowired
 ApplicationRepository appRepo;
-// 
+
 @GetMapping("applications")
  public List<Application> GetApplications() {
      
      return appRepo.findAll();
  }
+
  @GetMapping("applications/{id}")
  public Application GetApplicationById(@PathVariable("id") Long id) throws EntityNotFoundException {
      
@@ -53,9 +55,10 @@ ApplicationRepository appRepo;
 @ResponseStatus(code = HttpStatus.OK)
 @PutMapping("applications")
 public ResponseEntity<Application> UpdateApplications(@RequestBody Application newApplication) throws Exception {
+   
+
+   Optional <Application> currentApplication =appRepo.findById(newApplication.getId());
   
-      
-        Optional<Application> currentApplication=   appRepo.findById(newApplication.getId());
         if(currentApplication.isPresent()){
          Application _currentApplication=currentApplication.get();
             _currentApplication.setCard_number(newApplication.getCard_number());

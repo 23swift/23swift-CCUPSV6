@@ -6,7 +6,7 @@ import com.bdo.ccups.model.Employee;
 import com.bdo.ccups.model.Institution;
 import com.bdo.ccups.model.Product;
 import com.bdo.ccups.model.Application;
-import com.bdo.ccups.repo.ApplicationRepository;
+import com.bdo.ccups.repo.*;
 import com.bdo.ccups.repo.EmployeeRepository;
 import com.bdo.ccups.repo.InstitutionRepository;
 import com.bdo.ccups.repo.ProductRepository;
@@ -34,10 +34,10 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception { 
-	Institution inst=	this.instRepo.saveAndFlush(new Institution("SMART Communications", "1000", "0000001"));
-	this.instRepo.saveAndFlush(new Institution("MERALCO", "1002", "0000002"));
-	this.instRepo.saveAndFlush(new Institution("GLOBE Telecoms", "1003", "0000003"));
-	this.instRepo.saveAndFlush(new Institution("PLDT", "1004", "0000004"));
+	Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
+	this.instRepo.save(new Institution("MERALCO", "1002", "0000002"));
+	this.instRepo.save(new Institution("GLOBE Telecoms", "1003", "0000003"));
+	this.instRepo.save(new Institution("PLDT", "1004", "0000004"));
 
 	 Product prod=	this.productRepo.save(new Product(
 			"0001","SMART GOLD"
