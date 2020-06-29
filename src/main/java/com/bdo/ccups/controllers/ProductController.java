@@ -25,8 +25,8 @@ public class ProductController {
     InstitutionRepository institutionRepository;
 
     @GetMapping("productsByInstitutionId") 
-    public List<Product> GetProductsByInstitution(Long institutionId) throws Exception {
-          Optional< Institution> institution= institutionRepository.findById(institutionId);
+    public List<Product> GetProductsByInstitution(Long Id) throws Exception {
+          Optional< Institution> institution= institutionRepository.findById(Id);
           institution.orElseThrow(()-> new Exception("Institution not Found!") );
              
           return institution.get().getProducts();
