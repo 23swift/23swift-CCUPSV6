@@ -9,6 +9,6 @@ public interface InstitutionProjection {
     String getName();
     String getCode();
     String getMerchantId();
-    List<Application> getApplications();
+    // List<Application> getApplications();
     
 }

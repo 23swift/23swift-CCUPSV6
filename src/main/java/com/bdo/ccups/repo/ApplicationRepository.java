@@ -14,10 +14,10 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 
-// public interface ApplicationRepository extends CrudRepository<Application,Long>{
+public interface ApplicationRepository extends CrudRepository<Application,Long>{
    
-public interface ApplicationRepository extends JpaRepository<Application,Long>{
+// public interface ApplicationRepository extends JpaRepository<Application,Long>{
 // @RepositoryRestResource()
-List<Application> findAllByInstitutionName(@Param("name") String name);
+// List<Application> findAllByInstitutionName(@Param("name") String name);
     
 }

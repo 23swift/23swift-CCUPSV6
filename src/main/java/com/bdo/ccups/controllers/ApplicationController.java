@@ -28,7 +28,7 @@ public class ApplicationController {
 ApplicationRepository appRepo;
 
 @GetMapping("applications")
- public List<Application> GetApplications() {
+ public Iterable<Application> GetApplications() {
      
      return appRepo.findAll();
  }
@@ -45,9 +45,9 @@ ApplicationRepository appRepo;
  @PostMapping("applications")
  public Application SaveApplications(@RequestBody Application newApplication) throws Exception {
    
-    // appRepo.saveAndFlush(newApplication);
+    appRepo.save(newApplication);
     
-         return appRepo.saveAndFlush(newApplication);
+         return appRepo.save(newApplication);
     
        
     
