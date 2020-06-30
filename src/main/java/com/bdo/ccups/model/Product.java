@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 @Entity
 public class Product {
@@ -17,6 +18,11 @@ public class Product {
     public Product(String code, String name) {
 		this.code = code;
 		this.name = name;
+	}
+	public Product(String code, String name,Institution institution){
+		this.code = code;
+		this.name = name;
+		this.setInstitution(institution);
     }
     
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
@@ -24,7 +30,9 @@ public class Product {
     private String name;
 
     // @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true  )
-    // private List<Application> applications= new ArrayList<>();
+	// private List<Application> applications= new ArrayList<>();
+	@ManyToOne
+	private Institution institution;
 
 	public String getCode() {
 		return code;
@@ -45,6 +53,14 @@ public class Product {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Institution getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
 	}
 	
     

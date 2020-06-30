@@ -5,7 +5,7 @@ import java.lang.reflect.Executable;
 import java.util.List;
 import java.util.Optional;
 
-import com.bdo.ccups.ExceptionHandlers.EntityNotFoundException;
+// import com.bdo.ccups.ExceptionHandlers.EntityNotFoundException;
 import com.bdo.ccups.model.Application;
 import com.bdo.ccups.repo.*;
 
@@ -34,10 +34,11 @@ ApplicationRepository appRepo;
  }
 
  @GetMapping("applications/{id}")
- public Application GetApplicationById(@PathVariable("id") Long id) throws EntityNotFoundException {
+ public Application GetApplicationById(@PathVariable("id") Long id) throws Exception {
      
-     return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
+    //  return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
     //  orElse(throw new EntityNotFoundException(Application.class, "id", id.toString());
+    return appRepo.findById(id).get();
  }
 
  @ResponseStatus(code = HttpStatus.CREATED)
