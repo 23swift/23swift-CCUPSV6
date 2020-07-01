@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 
 @Projection(name = "applicationWithInstitution", types = { Application.class })
-public interface ApplicationProjection {
+public interface ApplicationWithInstitution {
     Long getId();
     // String  getFirst_name();
     // String getLast_name();
