@@ -11,10 +11,13 @@ import org.springframework.data.rest.core.config.Projection;
 @Projection(name = "applicationWithInstitution", types = { Application.class })
 public interface ApplicationProjection {
     Long getId();
-    String  getFirst_name();
-    String getLast_name();
+    // String  getFirst_name();
+    // String getLast_name();
+    @Value("#{target.getFirst_name() + ' ' + target.getLast_name()}")
+    String getName();
     String getReference_no();
     String getCard_number();
+
     @Value("#{target.getProduct().getName()}")
     String getProduct();
 

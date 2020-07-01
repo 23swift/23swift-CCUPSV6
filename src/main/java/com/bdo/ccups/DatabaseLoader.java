@@ -35,19 +35,19 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception { 
-		Product prod1=	this.productRepo.save(new Product(
-			"0001","SMART GOLD"
+		
+		// ArrayList<Product> prodList=new ArrayList<Product>();
+		// prodList.add(prod1);
+		// prodList.add(prod2);
+
+	Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
+
+	Product prod1=	this.productRepo.save(new Product(
+			"0001","SMART GOLD",inst
 		));
 		Product prod2=this.productRepo.save(new Product(
-			"0002","SMART PLATINUM"
+			"0002","SMART PLATINUM",inst
 		));
-		ArrayList<Product> prodList=new ArrayList<Product>();
-		prodList.add(prod1);
-		prodList.add(prod2);
-
-	Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001",
-	
-	prodList));
 
 	this.instRepo.save(new Institution("MERALCO", "1002", "0000002"));
 	this.instRepo.save(new Institution("GLOBE Telecoms", "1003", "0000003"));

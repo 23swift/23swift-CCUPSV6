@@ -24,21 +24,21 @@ public class ProductController {
     @Autowired
     InstitutionRepository institutionRepository;
 
-    @GetMapping("productsByInstitutionId") 
-    public List<Product> GetProductsByInstitution(Long Id) throws Exception {
-          Optional< Institution> institution= institutionRepository.findById(Id);
-          institution.orElseThrow(()-> new Exception("Institution not Found!") );
+//     @GetMapping("productsByInstitutionId") 
+//     public List<Product> GetProductsByInstitution(Long Id) throws Exception {
+//           Optional< Institution> institution= institutionRepository.findById(Id);
+//           institution.orElseThrow(()-> new Exception("Institution not Found!") );
              
-          return institution.get().getProducts();
+//           return institution.get().getProducts();
         
-    }
-   @PostMapping("products") 
-   public Product PostProduct(@RequestBody Product newProduct,@RequestParam Long id) throws Exception {
-                  Product product=productRepository.saveAndFlush(newProduct);
-                  Institution institution= institutionRepository.findById(id).get();
-                  institution.getProducts().add(product);
-                  institutionRepository.saveAndFlush(institution);
-            return newProduct;
-   }
+//     }
+//    @PostMapping("products") 
+//    public Product PostProduct(@RequestBody Product newProduct,@RequestParam Long id) throws Exception {
+//                   Product product=productRepository.saveAndFlush(newProduct);
+//                   Institution institution= institutionRepository.findById(id).get();
+//                   institution.getProducts().add(product);
+//                   institutionRepository.saveAndFlush(institution);
+//             return newProduct;
+//    }
     
 }

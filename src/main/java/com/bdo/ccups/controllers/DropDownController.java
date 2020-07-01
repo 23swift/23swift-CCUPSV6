@@ -31,13 +31,13 @@ public class DropDownController {
         return result;
           
     }
-    @GetMapping("findProductByIstitutionId")
-    public Iterable<Product> getProductsByInstitutionId(@RequestParam(name="Id") Long Id){
+    // @GetMapping("findProductByIstitutionId")
+    // public Iterable<Product> getProductsByInstitutionId(@RequestParam(name="Id") Long Id){
 
-        Iterable<Product> result= this.institutionRepo.findById(Id).get().getProducts();
-        return result;
+    //     Iterable<Product> result= this.institutionRepo.findById(Id).get().getProducts();
+    //     return result;
           
-    }
+    // }
     @GetMapping("institutions")
     public List<Institution> getInstitution(){
         List<Institution> result = this.institutionRepo.findAll();

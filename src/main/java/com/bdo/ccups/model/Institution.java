@@ -74,7 +74,7 @@ public class Institution {
         this.id = id;
     }
 
-    public Institution(String name, String code, String merchant_Id,  List<Product> products) {
+    public Institution(String name, String code, String merchant_Id, List<Product> products) {
         this.name = name;
         this.code = code;
         this.merchant_Id = merchant_Id;

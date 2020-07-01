@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(name = "withApplication", types = { Institution.class })
-public interface InstitutionProjection {
+public interface InstitutionWithApplication {
     String getName();
     String getCode();
     String getMerchantId();
