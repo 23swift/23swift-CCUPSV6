@@ -24,6 +24,7 @@ public interface ApplicationWithInstitution {
     // Product getProduct();
 
     @Value("#{target.getInstitution().getName()}")
-     String getInstitution();
+    String getInstitutionName();
+    Institution getInstitution();
     
 }
