@@ -21,34 +21,15 @@ import org.springframework.hateoas.RepresentationModel;
 public class Application{
    public Application(){}
     
-   public Application(String card_number, String last_name, String first_name, String middle_name, Product product,
-   Institution institution, String reference_no, boolean merchant, int card_product) {
-	
-	this.card_number = card_number;
-	this.last_name = last_name;
-	this.first_name = first_name;
-	this.middle_name = middle_name;
-	this.product = product;
-	this.institution = institution;
-	this.reference_no = reference_no;
-	this.merchant = merchant;
-	this.card_product = card_product;
-	}
-
-  
-
-
-
-
-	
+   
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
 	@RestResource(description = @Description("BDO Card Number")) 
-	private String card_number;
+	private String cardNumber;
 
-    private String last_name;
-	private String first_name;
-	private String middle_name;
+    private String lastName;
+	private String firstName;
+	private String middleName;
 	
 	@ManyToOne 
 	private Product product;
@@ -56,57 +37,58 @@ public class Application{
 	@ManyToOne  
 	private Institution institution;
 	
-	private String reference_no;
+	private String referenceNo;
 	private boolean merchant;
-	private int card_product;
-	public String getLast_name() {
-		return last_name;
-	}
+	private int cardProduct;
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-
-	public String getReference_no() {
-		return reference_no;
-	}
-
-	public void setReference_no(String reference_no) {
-		this.reference_no = reference_no;
-	}
-
-	public boolean isMerchant() {
-		return merchant;
-	}
-
-	public void setMerchant(boolean merchant) {
+	public Application(String cardNumber, String lastName, String firstName, String middleName, Product product,
+			Institution institution, String referenceNo, boolean merchant, int cardProduct) {
+		this.cardNumber = cardNumber;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.product = product;
+		this.institution = institution;
+		this.referenceNo = referenceNo;
 		this.merchant = merchant;
+		this.cardProduct = cardProduct;
 	}
 
+	public String getCardNumber() {
+		return cardNumber;
+	}
 
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
 
+	public String getLastName() {
+		return lastName;
+	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
+	public String getFirstName() {
+		return firstName;
+	}
 
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
 
 	public Product getProduct() {
 		return product;
 	}
-
-
-
-
-
-
 
 	public void setProduct(Product product) {
 		this.product = product;
@@ -120,39 +102,29 @@ public class Application{
 		this.institution = institution;
 	}
 
-	public int getCard_product() {
-		return card_product;
+	public String getReferenceNo() {
+		return referenceNo;
 	}
 
-	public void setCard_product(int card_product) {
-		this.card_product = card_product;
+	public void setReferenceNo(String referenceNo) {
+		this.referenceNo = referenceNo;
 	}
 
-	public String getMiddle_name() {
-		return middle_name;
+	public boolean isMerchant() {
+		return merchant;
 	}
 
-	public void setMiddle_name(String middle_name) {
-		this.middle_name = middle_name;
+	public void setMerchant(boolean merchant) {
+		this.merchant = merchant;
 	}
 
-	public Long getId() {
-		return id;
+	public int getCardProduct() {
+		return cardProduct;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCardProduct(int cardProduct) {
+		this.cardProduct = cardProduct;
 	}
-
-	public String getCard_number() {
-		return card_number;
-	}
-
-	public void setCard_number(String card_number) {
-		this.card_number = card_number;
-	}
-
-	
 	
 
 }

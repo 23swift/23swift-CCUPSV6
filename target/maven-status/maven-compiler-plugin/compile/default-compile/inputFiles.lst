@@ -1,4 +1,5 @@
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\model\Application.java
+C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\ConfigRepositoryRest.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\repo\ProductRepository.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\model\Employee.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\model\Institution.java
@@ -13,7 +14,6 @@ C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bd
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\controllers\ProductController.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\model\InstitutionWithProducts.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\ServletInitializer.java
-C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\SpringDataRestCustomization.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\controllers\DropDownController.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\model\ProductListForDropDown.java
 C:\Users\a012001164\Documents\CCUPS\CCUPSV6\BackEnd\ccupsv6\src\main\java\com\bdo\ccups\model\InstitutionWithLinks.java
