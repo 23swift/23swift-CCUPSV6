@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.rest.core.annotation.Description;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.hateoas.RepresentationModel;
@@ -26,7 +27,7 @@ public class Application{
 
 	@RestResource(description = @Description("BDO Card Number")) 
 	private String cardNumber;
-
+	
     private String lastName;
 	private String firstName;
 	private String middleName;
