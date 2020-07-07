@@ -13,10 +13,10 @@ public interface ApplicationWithInstitution {
     Long getId();
     // String  getFirst_name();
     // String getLast_name();
-    @Value("#{target.getFirst_name() + ' ' + target.getLast_name()}")
+    @Value("#{target.getFirstName() + ' ' + target.getLastName()}")
     String getName();
-    String getReference_no();
-    String getCard_number();
+    String getReferenceNo();
+    String getCardNumber();
 
     @Value("#{target.getProduct().getName()}")
     String getProduct();

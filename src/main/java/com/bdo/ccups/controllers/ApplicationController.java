@@ -27,59 +27,59 @@ public class ApplicationController {
 @Autowired
 ApplicationRepository appRepo;
 
-@GetMapping("applications")
- public Iterable<Application> GetApplications() {
+// @GetMapping("applications")
+//  public Iterable<Application> GetApplications() {
      
-     return appRepo.findAll();
- }
+//      return appRepo.findAll();
+//  }
 
- @GetMapping("applications/{id}")
- public Application GetApplicationById(@PathVariable("id") Long id) throws Exception {
+//  @GetMapping("applications/{id}")
+//  public Application GetApplicationById(@PathVariable("id") Long id) throws Exception {
      
-    //  return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
-    //  orElse(throw new EntityNotFoundException(Application.class, "id", id.toString());
-    return appRepo.findById(id).get();
- }
+//     //  return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
+//     //  orElse(throw new EntityNotFoundException(Application.class, "id", id.toString());
+//     return appRepo.findById(id).get();
+//  }
 
- @ResponseStatus(code = HttpStatus.CREATED)
- @PostMapping("applications")
- public Application SaveApplications(@RequestBody Application newApplication) throws Exception {
+//  @ResponseStatus(code = HttpStatus.CREATED)
+//  @PostMapping("applications")
+//  public Application SaveApplications(@RequestBody Application newApplication) throws Exception {
    
-    appRepo.save(newApplication);
+//     appRepo.save(newApplication);
     
-         return appRepo.save(newApplication);
+//          return appRepo.save(newApplication);
     
        
     
-}
+// }
 
-@ResponseStatus(code = HttpStatus.OK)
-@PutMapping("applications")
-public ResponseEntity<Application> UpdateApplications(@RequestBody Application newApplication) throws Exception {
+// @ResponseStatus(code = HttpStatus.OK)
+// @PutMapping("applications")
+// public ResponseEntity<Application> UpdateApplications(@RequestBody Application newApplication) throws Exception {
    
 
-   Optional <Application> currentApplication =appRepo.findById(newApplication.getId());
+//    Optional <Application> currentApplication =appRepo.findById(newApplication.getId());
   
-        if(currentApplication.isPresent()){
-         Application _currentApplication=currentApplication.get();
-            _currentApplication.setCard_number(newApplication.getCard_number());
-            _currentApplication.setFirst_name(newApplication.getFirst_name());
-            _currentApplication.setLast_name(newApplication.getLast_name());
-            _currentApplication.setCard_product(newApplication.getCard_product());
-            _currentApplication.setProduct(newApplication.getProduct());
-            _currentApplication.setReference_no(newApplication.getReference_no());
-            _currentApplication.setInstitution(newApplication.getInstitution());
-            _currentApplication.setMerchant(newApplication.isMerchant());
-            return new ResponseEntity<>(appRepo.save(_currentApplication), HttpStatus.OK);
-        } else {
-         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       }
+//         if(currentApplication.isPresent()){
+//          Application _currentApplication=currentApplication.get();
+//             _currentApplication.setCard_number(newApplication.getCard_number());
+//             _currentApplication.setFirst_name(newApplication.getFirst_name());
+//             _currentApplication.setLast_name(newApplication.getLast_name());
+//             _currentApplication.setCard_product(newApplication.getCard_product());
+//             _currentApplication.setProduct(newApplication.getProduct());
+//             _currentApplication.setReference_no(newApplication.getReference_no());
+//             _currentApplication.setInstitution(newApplication.getInstitution());
+//             _currentApplication.setMerchant(newApplication.isMerchant());
+//             return new ResponseEntity<>(appRepo.save(_currentApplication), HttpStatus.OK);
+//         } else {
+//          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
       
 
         
    
       
    
-}
+// }
     
 }
