@@ -24,7 +24,7 @@ public class Institution {
     private Long id;
     private String name;
     private String code;
-    private String merchant_Id;
+    private String merchantId;
 
     @OneToMany
     private List<Product> products;
@@ -47,11 +47,11 @@ public class Institution {
     }
 
     public String getMerchantId() {
-		return merchant_Id;
+		return merchantId;
 	}
 
-	public void setMerchantId(String merchant_Id) {
-		this.merchant_Id = merchant_Id;
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
 	}
 
 	public void setName(String name) {
@@ -74,29 +74,21 @@ public class Institution {
         this.id = id;
     }
 
-    public Institution(String name, String code, String merchant_Id, List<Product> products) {
+    public Institution(String name, String code, String merchantId, List<Product> products) {
         this.name = name;
         this.code = code;
-        this.merchant_Id = merchant_Id;
+        this.merchantId = merchantId;
         this.products = products;
     }
-    public Institution(String name, String code, String merchant_Id) {
+    public Institution(String name, String code, String merchantId) {
         this.name = name;
         this.code = code;
-        this.merchant_Id = merchant_Id;
+        this.merchantId = merchantId;
         
     }
     // public String getHeader() {
     //     return header;
     // }
-
-    public String getMerchant_Id() {
-        return merchant_Id;
-    }
-
-    public void setMerchant_Id(String merchant_Id) {
-        this.merchant_Id = merchant_Id;
-    }
 
     public List<Product> getProducts() {
         return products;

@@ -35,21 +35,22 @@ public class Application{
 	@ManyToOne 
 	private Product product;
 
-	@ManyToOne  
-	private Institution institution;
+	// @ManyToOne  
+	// private Institution institution;
 	
 	private String referenceNo;
 	private boolean merchant;
 	private int cardProduct;
 
 	public Application(String cardNumber, String lastName, String firstName, String middleName, Product product,
-			Institution institution, String referenceNo, boolean merchant, int cardProduct) {
+			// Institution institution, 
+			String referenceNo, boolean merchant, int cardProduct) {
 		this.cardNumber = cardNumber;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.product = product;
-		this.institution = institution;
+		// this.institution = institution;
 		this.referenceNo = referenceNo;
 		this.merchant = merchant;
 		this.cardProduct = cardProduct;
@@ -95,13 +96,13 @@ public class Application{
 		this.product = product;
 	}
 
-	public Institution getInstitution() {
-		return institution;
-	}
+	// public Institution getInstitution() {
+	// 	return institution;
+	// }
 
-	public void setInstitution(Institution institution) {
-		this.institution = institution;
-	}
+	// public void setInstitution(Institution institution) {
+	// 	this.institution = institution;
+	// }
 
 	public String getReferenceNo() {
 		return referenceNo;

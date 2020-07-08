@@ -24,7 +24,7 @@ InstitutionRepository institutionRepository;
 ProductRepository productRepository;
 
     @GetMapping("institutions")
- public List<Institution> GetApplications() throws Exception {
+ public Iterable<Institution> GetApplications() throws Exception {
      
      return institutionRepository.findAll();
  }
@@ -34,14 +34,14 @@ ProductRepository productRepository;
     public Institution PostInstitution(@RequestBody Institution newInstitution) throws Exception
     {
 
-                return institutionRepository.saveAndFlush(newInstitution);
+                return institutionRepository.save(newInstitution);
     }
     @ResponseStatus(code = HttpStatus.OK)
     @PutMapping("institutions")
        public Institution PutInstitution(@RequestBody Institution newInstitution) throws Exception
        {
    
-                   return institutionRepository.saveAndFlush(newInstitution);
+                   return institutionRepository.save(newInstitution);
        }
     //    @ResponseStatus(code = HttpStatus.OK)
     //    @PutMapping("addProduct")

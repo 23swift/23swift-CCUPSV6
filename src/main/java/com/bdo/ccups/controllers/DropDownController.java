@@ -39,8 +39,8 @@ public class DropDownController {
           
     // }
     @GetMapping("institutions")
-    public List<Institution> getInstitution(){
-        List<Institution> result = this.institutionRepo.findAll();
+    public Iterable<Institution> getInstitution(){
+        Iterable<Institution> result = this.institutionRepo.findAll();
         
         return result;
           

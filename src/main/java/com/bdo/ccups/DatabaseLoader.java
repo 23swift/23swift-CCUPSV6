@@ -55,7 +55,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	
 		
-		this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod1,inst,"00001",true,19));
+		this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod1,"00001",true,19));
 		
 	}
 }
