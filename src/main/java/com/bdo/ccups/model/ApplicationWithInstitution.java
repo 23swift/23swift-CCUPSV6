@@ -1,10 +1,9 @@
 package com.bdo.ccups.model;
 
-import com.bdo.ccups.model.Application;
-import com.bdo.ccups.model.Institution;
-
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.data.rest.core.config.Projection;
+
 
 
 
@@ -25,6 +24,6 @@ public interface ApplicationWithInstitution {
 
     @Value("#{target.getProduct().getInstitution().getName()}")
     String getInstitutionName();
-
-   
+    
+    
 }
