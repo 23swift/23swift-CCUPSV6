@@ -45,7 +45,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	Product prod1=	this.productRepo.save(new Product(
 			"0001","SMART GOLD",inst
 		));
-		Product prod2=this.productRepo.save(new Product(
+		Product prod2=this.productRepo.save(new Product( 
 			"0002","SMART PLATINUM",inst
 		));
 
@@ -55,7 +55,8 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	
 		
-		this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod1,"00001",true,19));
+		this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod2,"00001",true,19));
+		this.appRepo.save(new Application("1111111022111112","Costamero","ARnold2","Belen",prod1,"00002",true,19));
 		
 	}
 }

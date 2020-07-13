@@ -7,25 +7,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.data.rest.core.annotation.Description;
 import org.springframework.data.rest.core.annotation.RestResource;
-import org.springframework.hateoas.RepresentationModel;
+
+
 
 // "id":2,"card_number":"3555484527646565","last_name":"Shevelin","first_name":"Kimberley","institution":"Izio","product":"jcb","reference_no":"1987320255","merchant":false
 @Entity
+
 public class Application{
    public Application(){}
     
    
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
-	@RestResource(description = @Description("BDO Card Number")) 
+	// @RestResource(description = @Description("BDO Card Number")) 
 	private String cardNumber;
 	
     private String lastName;
@@ -33,6 +29,8 @@ public class Application{
 	private String middleName;
 	
 	@ManyToOne 
+	// @RestResource(rel = "product",path = "prodxxx/" )
+	@RestResource(exported = false)
 	private Product product;
 
 	// @ManyToOne  
@@ -128,5 +126,5 @@ public class Application{
 		this.cardProduct = cardProduct;
 	}
 	
-
+	
 }

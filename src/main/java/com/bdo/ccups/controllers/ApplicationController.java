@@ -2,14 +2,24 @@ package com.bdo.ccups.controllers;
 
 
 import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
+
+
 
 // import com.bdo.ccups.ExceptionHandlers.EntityNotFoundException;
 import com.bdo.ccups.model.Application;
 import com.bdo.ccups.repo.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.core.DummyInvocationUtils;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,65 +31,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+
+@RepositoryRestController
 //  @RequestMapping("api")                      localhost:8080/api/applications
 public class ApplicationController {
 @Autowired
-ApplicationRepository appRepo;
+private  ApplicationRepository appRepo;
+// @Autowired
+// private  Link linkTo;
 
-// @GetMapping("applications")
-//  public Iterable<Application> GetApplications() {
-     
-//      return appRepo.findAll();
-//  }
+// @GetMapping("/myapplications")
+// public ResponseEntity<EntityModel<Application>> findApplicationById(@PathVariable("id") long id){
 
-//  @GetMapping("applications/{id}")
-//  public Application GetApplicationById(@PathVariable("id") Long id) throws Exception {
-     
-//     //  return appRepo.findById(id).orElseThrow(()->new EntityNotFoundException(Application.class, "id", id.toString()));
-//     //  orElse(throw new EntityNotFoundException(Application.class, "id", id.toString());
-//     return appRepo.findById(id).get();
-//  }
+//  Link link = WebMvcLinkBuilder.linkTo(DummyInvocationUtils.methodOn(ApplicationController.class).findApplicationById(id)).withRel("product");
 
-//  @ResponseStatus(code = HttpStatus.CREATED)
-//  @PostMapping("applications")
-//  public Application SaveApplications(@RequestBody Application newApplication) throws Exception {
+
+//  EntityModel<Application>  application=  EntityModel.of(appRepo.findById(id).get(),link);
+    
    
-//     appRepo.save(newApplication);
-    
-//          return appRepo.save(newApplication);
-    
-       
-    
+// 	return ResponseEntity.ok(application);
 // }
 
-// @ResponseStatus(code = HttpStatus.OK)
-// @PutMapping("applications")
-// public ResponseEntity<Application> UpdateApplications(@RequestBody Application newApplication) throws Exception {
-   
-
-//    Optional <Application> currentApplication =appRepo.findById(newApplication.getId());
-  
-//         if(currentApplication.isPresent()){
-//          Application _currentApplication=currentApplication.get();
-//             _currentApplication.setCard_number(newApplication.getCard_number());
-//             _currentApplication.setFirst_name(newApplication.getFirst_name());
-//             _currentApplication.setLast_name(newApplication.getLast_name());
-//             _currentApplication.setCard_product(newApplication.getCard_product());
-//             _currentApplication.setProduct(newApplication.getProduct());
-//             _currentApplication.setReference_no(newApplication.getReference_no());
-//             _currentApplication.setInstitution(newApplication.getInstitution());
-//             _currentApplication.setMerchant(newApplication.isMerchant());
-//             return new ResponseEntity<>(appRepo.save(_currentApplication), HttpStatus.OK);
-//         } else {
-//          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-      
-
-        
-   
-      
-   
-// }
-    
 }

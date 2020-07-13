@@ -7,6 +7,7 @@ import org.springframework.data.rest.core.config.Projection;
 @Projection(name = "withProducts", types = { Institution.class })
 public interface InstitutionWithProducts {
     Long getId();
+    String getCode();
     String getName();
     // List<Product> getProducts();
     
