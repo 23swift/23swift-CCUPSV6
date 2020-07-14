@@ -22,4 +22,5 @@ public interface ApplicationRepository extends CrudRepository<Application,Long>{
 // @RepositoryRestResource()
 // List<Application> findAllByInstitutionName(@Param("name") String name);
     
+    
 }

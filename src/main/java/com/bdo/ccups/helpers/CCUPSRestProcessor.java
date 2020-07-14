@@ -24,8 +24,24 @@ public class CCUPSRestProcessor implements RepresentationModelProcessor<EntityMo
     public EntityModel<Application> process(EntityModel<Application> model) {
         // TODO Auto-generated method stub
         
-             model.add(links.linkForItemResource( Product.class,model.getContent().getProduct().getId()).withRel("product"));
-           
+             model.add(links.linkForItemResource( Product.class,model.getContent().getProduct().getId()).withRel("props").withName(Product.class.getSimpleName().toLowerCase()));
+            
+             if(model.getContent().getStatus().equalsIgnoreCase("")){
+                model.add(model.getLink("self").get().withRel("controls").withTitle("Delete").withType("button").withName("delete"));
+                model.add(model.getLink("self").get().withRel("controls").withTitle("Update").withType("button").withName("update"));
+                model.add(model.getLink("self").get().withRel("controls").withTitle("Submit to Approver").withType("button").withName("submit"));
+             }else
+             {
+                model.add(model.getLink("self").get().withRel("controls").withTitle("Approve").withType("button").withName("approve"));
+                model.add(model.getLink("self").get().withRel("controls").withTitle("Decline").withType("button").withName("decline"));
+                
+             }
+             
+             
+
+             
+             
+             
         return model;
 
     }

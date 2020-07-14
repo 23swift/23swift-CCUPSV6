@@ -27,10 +27,12 @@ public class Application{
     private String lastName;
 	private String firstName;
 	private String middleName;
+	private boolean forApproval;
+	private String status="";
 	
 	@ManyToOne 
-	// @RestResource(rel = "product",path = "prodxxx/" )
-	@RestResource(exported = false)
+	// @RestResource(rel = "application_product")
+	// @RestResource(exported = false)
 	private Product product;
 
 	// @ManyToOne  
@@ -124,6 +126,22 @@ public class Application{
 
 	public void setCardProduct(int cardProduct) {
 		this.cardProduct = cardProduct;
+	}
+
+	public boolean isForApproval() {
+		return forApproval;
+	}
+
+	public void setForApproval(boolean forApproval) {
+		this.forApproval = forApproval;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

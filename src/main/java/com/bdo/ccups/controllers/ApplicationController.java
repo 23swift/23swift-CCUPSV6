@@ -18,6 +18,7 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.hateoas.server.core.DummyInvocationUtils;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
@@ -32,24 +33,34 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
+
 @RepositoryRestController
 //  @RequestMapping("api")                      localhost:8080/api/applications
 public class ApplicationController {
 @Autowired
 private  ApplicationRepository appRepo;
+
+@Autowired
+EntityLinks
+ links;
 // @Autowired
 // private  Link linkTo;
+@org.springframework.beans.factory.annotation.Value("${application.status.forApproval}")
+String forApproval;
 
-// @GetMapping("/myapplications")
-// public ResponseEntity<EntityModel<Application>> findApplicationById(@PathVariable("id") long id){
+@GetMapping("/submitApplication")
+public ResponseEntity<EntityModel<Application>> submitApplication(@PathVariable("id") long id){
 
-//  Link link = WebMvcLinkBuilder.linkTo(DummyInvocationUtils.methodOn(ApplicationController.class).findApplicationById(id)).withRel("product");
+ Link link = WebMvcLinkBuilder.linkTo(DummyInvocationUtils.methodOn(ApplicationController.class).submitApplication(id)).withSelfRel();
 
-
-//  EntityModel<Application>  application=  EntityModel.of(appRepo.findById(id).get(),link);
+Application app=appRepo.findById(id).get();
+app.setStatus(forApproval);
+appRepo.save(app);
+ EntityModel<Application>  application=    new EntityModel<> (  app,link);
     
    
-// 	return ResponseEntity.ok(application);
-// }
+	return ResponseEntity.ok(application);
+}
 
 }
