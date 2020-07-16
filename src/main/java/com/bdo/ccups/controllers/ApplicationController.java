@@ -40,33 +40,64 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RepositoryRestController
-
+@RequestMapping(path = "api/applications")
 public class ApplicationController {
+	@Autowired
+	private  ApplicationRepository appRepo;
 
-@Autowired
-private  ApplicationRepository appRepo;
+	@Autowired
+	EntityLinks
+	links;
 
-@Autowired
-EntityLinks
- links;
-// @Autowired
-// private  Link linkTo;
-@org.springframework.beans.factory.annotation.Value("${application.status.forApproval}")
-String forApproval;
-// @RestResource(  rel = "actions" , path ="api/applications/actions/submit/{id}",exported = true )
-@RequestMapping(method = RequestMethod.PUT,path = "applications/actions/submit/{id}") 
-// @PutMapping()
-public ResponseEntity<Application> submitApplication(@PathVariable("id") String id){
+	@org.springframework.beans.factory.annotation.Value("${application.status.forApproval}")
+	String forApproval;
+	@org.springframework.beans.factory.annotation.Value("${application.status.approved}")
+	String approved;
+
+	@org.springframework.beans.factory.annotation.Value("${application.status.declined}")
+	String declined;
+
+	@RestResource(  exported = false )
+	@RequestMapping(method = RequestMethod.PUT,path = "actions/submit/{id}") 
+	public ResponseEntity<Application> submitApplication(@PathVariable("id") String id){
+
+	Application app=appRepo.findById(Long.parseLong(id) ).get();
+	app.setStatus(forApproval);
+	appRepo.save(app);
+	//  EntityModel<Application>  application=    new EntityModel<> (  app,link);
+		
+	
+		return ResponseEntity.ok(app);
+	}
 
 
 
-Application app=appRepo.findById(Long.parseLong(id) ).get();
-app.setStatus(forApproval);
-appRepo.save(app);
-//  EntityModel<Application>  application=    new EntityModel<> (  app,link);
-    
-   
-	return ResponseEntity.ok(app);
-}
 
+	@RequestMapping(method = RequestMethod.PUT,path = "actions/approve/{id}") 
+	public ResponseEntity<Application> Approve(@PathVariable("id") String id){
+
+
+
+	Application app=appRepo.findById(Long.parseLong(id) ).get();
+	app.setStatus(approved);
+	appRepo.save(app);
+	//  EntityModel<Application>  application=    new EntityModel<> (  app,link);
+		
+	
+		return ResponseEntity.ok(app);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT,path = "actions/decline/{id}") 
+	public ResponseEntity<Application> Decline(@PathVariable("id") String id){
+
+
+
+	Application app=appRepo.findById(Long.parseLong(id) ).get();
+	app.setStatus(declined);
+	appRepo.save(app);
+	//  EntityModel<Application>  application=    new EntityModel<> (  app,link);
+		
+	
+		return ResponseEntity.ok(app);
+	}
 }

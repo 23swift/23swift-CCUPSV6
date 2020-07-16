@@ -22,6 +22,9 @@ public class CCUPSRestProcessor implements RepresentationModelProcessor<EntityMo
     EntityLinks links;
     // @Autowired
     // RepositoryRestConfiguration configuration;
+    @org.springframework.beans.factory.annotation.Value("${application.status.forApproval}")
+    String forApproval;
+ 
 
     @Override
     public EntityModel<Application> process(EntityModel<Application> model) {
@@ -36,11 +39,11 @@ public class CCUPSRestProcessor implements RepresentationModelProcessor<EntityMo
                 model.add(model.getLink("self").get().withRel("action").withTitle("Delete").withType("delete").withName("delete"));
                 model.add(model.getLink("self").get().withRel("action").withTitle("Update").withType("PUT").withName("update"));
                 // model.add(model.getLink("self").get().withRel("controls").withTitle("Submit to Approver").withType("button").withName("submit"));
-                model.add(link.withTitle("Submit to Approver").withType("PUT").withName("submit"));
-             }else  
+                model.add(link.withTitle("Submit").withType("PUT").withName("submit"));
+             }else  if(model.getContent().getStatus().equalsIgnoreCase(forApproval))
              {
-                model.add(model.getLink("self").get().withRel("action").withTitle("Approve").withType("PUT").withName("approve"));
-                model.add(model.getLink("self").get().withRel("action").withTitle("Decline").withType("PUT").withName("decline"));
+                model.add(WebMvcLinkBuilder.linkTo(DummyInvocationUtils.methodOn(ApplicationController.class).Approve(model.getContent().getId().toString())).withRel("action").withTitle("Approve").withType("PUT").withName("approve"));
+                model.add(WebMvcLinkBuilder.linkTo(DummyInvocationUtils.methodOn(ApplicationController.class).Decline(model.getContent().getId().toString())).withRel("action").withTitle("Decline").withType("PUT").withName("decline"));
                 
              }
 
