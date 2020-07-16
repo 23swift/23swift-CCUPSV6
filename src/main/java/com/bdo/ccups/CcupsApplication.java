@@ -74,16 +74,16 @@ public class CcupsApplication  {
 		this.appRepo.save(new Application("1111111022111112","Costamero","ARnold2","Belen",prod1,"00002",true,19));
 		
 	}
-	// @Bean
-	// public WebMvcConfigurer corsConfigurer() {
-	// 	return new WebMvcConfigurer() {
-	// 		@Override
-	// 		public void addCorsMappings(CorsRegistry registry) {
-	// 			registry.addMapping("/**").allowedMethods("POST","PUT","GET").allowedOrigins(fornt_end_origin);
-	// 		}
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedMethods("POST","PUT","GET").allowedOrigins(fornt_end_origin);
+			}
 			
-	// 	};
-	// }
+		};
+	}
 	// @Bean
 	// public WebMvcConfigurer basePathConfigurer() {
 	// 	return new WebMvcConfigurer() {
