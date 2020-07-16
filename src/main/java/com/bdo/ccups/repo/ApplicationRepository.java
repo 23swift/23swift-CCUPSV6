@@ -13,9 +13,13 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
+import org.springframework.security.access.prepost.PreAuthorize;
+// import org.springframework.security.access.prepost.*;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 // @CrossOrigin(origins = "http://localhost:3000")
+
+// @PreAuthorize( "hasRole('ROLE_ADMIN')")
 public interface ApplicationRepository extends CrudRepository<Application,Long>{
    
 // public interface ApplicationRepository extends JpaRepository<Application,Long>{
