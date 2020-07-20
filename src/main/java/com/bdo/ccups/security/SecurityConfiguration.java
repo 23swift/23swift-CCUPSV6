@@ -68,20 +68,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     //   .csrf().disable()
     //   .authorizeRequests()
       
-    //   // .antMatchers(HttpMethod.GET,"/api/**").hasRole("USER")
-    //   //   .antMatchers(HttpMethod.POST,"/api/applications/actions/**").hasRole("ADMIN")
-    //   //   .antMatchers(HttpMethod.PUT, "/api/applications/actions/**").hasRole("ADMIN")
-    //   //   .antMatchers(HttpMethod.PATCH, "/api/applications/actions/**").hasRole("ADMIN")
-    //     .antMatchers("/api/authenticate").permitAll().anyRequest().authenticated().and()
-    //     .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-		// 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    //     // .anyRequest().authenticated().and()
+    //   .antMatchers(HttpMethod.GET,"/api/**").permitAll();
+      //   .antMatchers(HttpMethod.POST,"/api/applications/actions/**").hasRole("ADMIN")
+      //   .antMatchers(HttpMethod.PUT, "/api/applications/actions/**").hasRole("ADMIN")
+      //   .antMatchers(HttpMethod.PATCH, "/api/applications/actions/**").hasRole("ADMIN")
+        // .antMatchers("/api/authenticate").permitAll().anyRequest().authenticated().and()
+        // .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+				// .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // .anyRequest().authenticated().and()
         
-    //   // .csrf().disable();
+      // .csrf().disable();
 
-    http.csrf().disable()
+    http
+    .csrf().disable()
 				// dont authenticate this particular request
-				.authorizeRequests().antMatchers("/api/authenticate").permitAll().
+        .authorizeRequests()
+        // .antMatchers(HttpMethod.GET,"/api/**").permitAll()
+        .antMatchers("/api/authenticate").permitAll().
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and().
 				// make sure we use stateless session; session won't be used to

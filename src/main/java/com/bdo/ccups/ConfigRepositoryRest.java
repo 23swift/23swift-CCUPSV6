@@ -7,14 +7,14 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 
 
 @Configuration
-
 public class ConfigRepositoryRest implements RepositoryRestConfigurer {
     @Value("${front_end.origin}")
     String fornt_end_origin;
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.getCorsRegistry()
-                .addMapping("/**").allowedMethods("POST","PUT","GET")
+                .addMapping( "/**").allowedMethods("POST","PUT","GET")
+               
                 .allowedOrigins(fornt_end_origin);
                 
     }

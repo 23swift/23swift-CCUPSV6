@@ -35,8 +35,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @SpringBootApplication
-
-
 public class CcupsApplication  {
 	@Value("${front_end.origin}")
 	String fornt_end_origin;
@@ -84,6 +82,8 @@ public class CcupsApplication  {
 			
 		};
 	}
+
+
 	// @Bean
 	// public WebMvcConfigurer basePathConfigurer() {
 	// 	return new WebMvcConfigurer() {
