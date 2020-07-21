@@ -84,6 +84,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// dont authenticate this particular request
         .authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
+        .antMatchers("/h2-console/**").permitAll()
         .antMatchers("/api/authenticate").permitAll().
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and().
@@ -93,5 +94,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        http.headers().frameOptions().sameOrigin();
   }
 }
