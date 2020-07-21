@@ -18,7 +18,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 // @CrossOrigin(origins = "http://localhost:3000")
-
 // @PreAuthorize( "hasRole('ROLE_ADMIN')")
 public interface ApplicationRepository extends CrudRepository<Application,Long>{
    

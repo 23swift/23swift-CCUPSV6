@@ -77,7 +77,7 @@ public class CcupsApplication  {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("POST","PUT","GET").allowedOrigins(fornt_end_origin);
+				registry.addMapping("/**").allowedMethods("POST","PUT","GET","OPTIONS").allowedOrigins(fornt_end_origin);
 			}
 			
 		};

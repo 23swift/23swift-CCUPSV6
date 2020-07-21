@@ -36,7 +36,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		// only the Token
 		
 		
-        System.out.println("Token " + request.getRemoteUser()+ ":" +request.getAuthType());
+       
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
 			jwtToken = requestTokenHeader.substring(7);
 			try {

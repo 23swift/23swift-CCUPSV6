@@ -13,7 +13,7 @@ public class ConfigRepositoryRest implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.getCorsRegistry()
-                .addMapping( "/**").allowedMethods("POST","PUT","GET")
+                .addMapping( "/**").allowedMethods("POST","PUT","GET","OPTIONS")
                
                 .allowedOrigins(fornt_end_origin);
                 

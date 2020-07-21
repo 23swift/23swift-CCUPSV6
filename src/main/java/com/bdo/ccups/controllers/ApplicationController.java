@@ -57,7 +57,7 @@ public class ApplicationController {
 	@org.springframework.beans.factory.annotation.Value("${application.status.declined}")
 	String declined;
 
-	@RestResource(  exported = false )
+	// @RestResource(  exported = false )
 	@RequestMapping(method = RequestMethod.PUT,path = "actions/submit/{id}") 
 	public ResponseEntity<Application> submitApplication(@PathVariable("id") String id){
 
