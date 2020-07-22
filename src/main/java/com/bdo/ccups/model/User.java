@@ -18,20 +18,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.mapping.Set;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-
+@Getter
+@Setter
 public class User  extends Auditable<String> {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     @Column
-    private String username;
+    private String userName;
     @Column
     @JsonIgnore
     private String password;
     @Column
     private String name;
+
+    @Column
+    private String token;
     
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -46,10 +52,18 @@ public class User  extends Auditable<String> {
 
   
 
-    public User(String username, String password, String name, List<Role> roles) {
-        this.username = username;
+    public User(String userName, String password, String name, List<Role> roles) {
+        this.userName = userName;
         this.password = password;
         this.name = name;
+        this.roles = roles;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }

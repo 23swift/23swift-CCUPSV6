@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;import org.springframework.beans.factory.annotation.Value;
+import java.util.function.Function;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,8 +16,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenUtil implements Serializable {
 
+    @Autowired
+	private CCUPSUserDetailsService userDetailsService;
+	
+	private static final long serialVersionUID = -2550185165626007488L;
+	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;	
+	// public static final long JWT_TOKEN_VALIDITY = 2;	
 
-    private static final long serialVersionUID = -2550185165626007488L;	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;	
     @Value("${jwt.secret}")
 	private String secret;	//retrieve username from jwt token
 	public String getUsernameFromToken(String token) {
@@ -48,6 +56,7 @@ public class JwtTokenUtil implements Serializable {
 	}	//validate token
 	public Boolean validateToken(String token, UserDetails userDetails) {
 		final String username = getUsernameFromToken(token);
-		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+		final Boolean isValidToken= username.equals(userDetails.getUsername()) && !isTokenExpired(token) &&  userDetailsService.CheckToken(token, username);
+		return (isValidToken);
 	}
 }

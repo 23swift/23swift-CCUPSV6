@@ -33,9 +33,20 @@ public class JwtAuthenticationController {
         
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());		
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());		
-                final String token = jwtTokenUtil.generateToken(userDetails);	
+                final String token = jwtTokenUtil.generateToken(userDetails);
+                userDetailsService.SaveToken(token, authenticationRequest.getUsername());	
         return ResponseEntity.ok(new JwtResponse(token));
-	}
+    }
+    //   @RequestMapping(value = "api/logout", method = RequestMethod.POST)
+	// public ResponseEntity<?> handleLogout(@RequestBody JwtRequest authenticationRequest) throws Exception {		
+
+        
+    //     authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());		
+    //     final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());		
+    //             final String token = jwtTokenUtil.generateToken(userDetails);
+    //             userDetailsService.SaveToken(token, authenticationRequest.getUsername());	
+    //     return ResponseEntity.ok(new JwtResponse(token));
+	// }
     
 
     private void authenticate(String username, String password) throws Exception {
@@ -46,5 +57,9 @@ public class JwtAuthenticationController {
 		} catch (BadCredentialsException e) {
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
-	}
+    }
+    // private void LogoutUser(String username) throws Exception {
+
+    //     userDetailsService.Logout(username);
+    // }
 }

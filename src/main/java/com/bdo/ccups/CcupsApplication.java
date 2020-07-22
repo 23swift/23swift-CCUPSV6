@@ -8,6 +8,9 @@ import com.bdo.ccups.model.Product;
 import com.bdo.ccups.repo.ApplicationRepository;
 import com.bdo.ccups.repo.InstitutionRepository;
 import com.bdo.ccups.repo.ProductRepository;
+import com.bdo.ccups.security.CCUPSUserDetailsService;
+import com.bdo.ccups.security.JwtAuthenticationEntryPoint;
+import com.bdo.ccups.security.JwtRequestFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,8 +27,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerTypePredicate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -38,11 +43,40 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CcupsApplication  {
 	@Value("${front_end.origin}")
 	String fornt_end_origin;
+
+	@Autowired 
+	private  ApplicationRepository appRepo;
+	@Autowired 
+	private  ProductRepository productRepo;
+	
+	@Autowired 
+	private  InstitutionRepository instRepo;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CcupsApplication.class, args);
 	}
+	// public @PostConstruct void init() {
 
+	// 	Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
+
+	// Product prod1=	this.productRepo.save(new Product(
+	// 		"0001","SMART GOLD",inst
+	// 	));
+	// 	Product prod2=this.productRepo.save(new Product( 
+	// 		"0002","SMART PLATINUM",inst
+	// 	));
+
+	// this.instRepo.save(new Institution("MERALCO", "1002", "0000002"));
+	// this.instRepo.save(new Institution("GLOBE Telecoms", "1003", "0000003"));
+	// this.instRepo.save(new Institution("PLDT", "1004", "0000004"));
+
+	
+		
+	// 	this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod2,"00001",true,19));
+	// 	this.appRepo.save(new Application("1111111022111112","Costamero","ARnold2","Belen",prod1,"00002",true,19));
+		
+	// }
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -78,18 +112,26 @@ public class CcupsApplication  {
 	// 			.withUser("ollie").password("{noop}gierke").roles("USER", "ADMIN");
 	// 		}
 
-	// 		// @Override
-	// 		// 	protected void configure(HttpSecurity http) throws Exception {
+	// 		@Override
+	// 			protected void configure(HttpSecurity http) throws Exception {
 
-	// 		// 		http
-	// 		// 		.httpBasic().and()
-	// 		// 		.authorizeRequests()
-	// 		// 			.antMatchers(HttpMethod.GET, "/api/**").hasRole("USER")
-	// 		// 			.antMatchers(HttpMethod.PUT, "/api/applications/actions/**").hasRole("ADMIN").and()
+	// 				http
+	// 				.csrf().disable()
+	// 							// dont authenticate this particular request
+	// 					.authorizeRequests()
+	// 					.antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
+	// 					.antMatchers("/h2-console/**").permitAll()
+	// 					.antMatchers("/api/authenticate").permitAll().
+	// 							// all other requests need to be authenticated
+	// 							anyRequest().authenticated().and().
+	// 							// make sure we use stateless session; session won't be used to
+	// 							// store user's state.
+	// 							exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+	// 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 						
-						
-	// 		// 		.csrf().disable();
-	// 		// 	}
+	// 					http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+	// 					http.headers().frameOptions().sameOrigin();
+	// 			}
 	// 	};
 	// }
 

@@ -15,6 +15,9 @@ import com.bdo.ccups.repo.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 
@@ -25,7 +28,9 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final ApplicationRepository appRepo;
 	private final ProductRepository productRepo;
 	private final InstitutionRepository instRepo;
-private final UserRepository userRepo;
+	
+    private final UserRepository userRepo;
+
 
 	@Autowired 
 	public DatabaseLoader(ApplicationRepository appRepo,ProductRepository productRepo,InstitutionRepository instRepo,UserRepository userRepo) {
@@ -34,15 +39,18 @@ private final UserRepository userRepo;
 		this.productRepo=productRepo;
 		this.instRepo=instRepo;
 		this.userRepo=userRepo;
+		
 	}
 
 	@Override
 	public void run(String... strings) throws Exception { 
+		
+		List <Role> roles= new ArrayList<Role>();
+		roles.add(new Role("ROLE_USER","ROLE_USER" ));
+		roles.add(new Role("ROLE_APPROVER","ROLE_APPROVER" ));
 
-		// List <Role> roles= new ArrayList<Role>();
-		// roles.add(new Role("User","System user" ));
+		this.userRepo.save(new  com.bdo.ccups.model.User( "a012001164","password","arnold", roles));
 
-		// this.userRepo.save(new  com.bdo.ccups.model.User( "a012001164","password","arnold", roles));
 		Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
 		ArrayList<Product> prodList=new ArrayList<Product>();
 		Product prod1=	this.productRepo.save(new Product(
@@ -63,8 +71,8 @@ private final UserRepository userRepo;
 
 	
 		
-		this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod2,"00001",true,19));
-		this.appRepo.save(new Application("1111111022111112","Costamero","ARnold2","Belen",prod1,"00002",true,19));
+		// this.appRepo.save(new Application("1111111022111111","Costamero","ARnold","Belen",prod2,"00001",true,19));
+		// this.appRepo.save(new Application("1111111022111112","Costamero","ARnold2","Belen",prod1,"00002",true,19));
 		
 	}
 }
