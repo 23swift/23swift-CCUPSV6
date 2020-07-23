@@ -13,12 +13,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 // import org.springframework.security.access.prepost.*;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 
- @PreAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
+//  @PreAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
+ @PostAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
 public interface ApplicationRepository extends CrudRepository<Application,Long>{
    
 // public interface ApplicationRepository extends JpaRepository<Application,Long>{

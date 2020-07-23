@@ -37,16 +37,11 @@ public class JwtAuthenticationController {
                 userDetailsService.SaveToken(token, authenticationRequest.getUsername());	
         return ResponseEntity.ok(new JwtResponse(token));
     }
-    //   @RequestMapping(value = "api/logout", method = RequestMethod.POST)
-	// public ResponseEntity<?> handleLogout(@RequestBody JwtRequest authenticationRequest) throws Exception {		
-
-        
-    //     authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());		
-    //     final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());		
-    //             final String token = jwtTokenUtil.generateToken(userDetails);
-    //             userDetailsService.SaveToken(token, authenticationRequest.getUsername());	
-    //     return ResponseEntity.ok(new JwtResponse(token));
-	// }
+      @RequestMapping(value = "api/logout", method = RequestMethod.PUT)
+	public ResponseEntity<?> handleLogout() throws Exception {		
+       
+        return ResponseEntity.ok(this.LogoutUser());
+	}
     
 
     private void authenticate(String username, String password) throws Exception {
@@ -58,8 +53,8 @@ public class JwtAuthenticationController {
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
     }
-    // private void LogoutUser(String username) throws Exception {
+    private UserDetails LogoutUser() throws Exception {
 
-    //     userDetailsService.Logout(username);
-    // }
+        return userDetailsService.Logout();
+    }
 }

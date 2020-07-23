@@ -37,7 +37,7 @@ public class User  extends Auditable<String> {
     private String name;
 
     @Column
-    private String token;
+    private String token="";
     
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

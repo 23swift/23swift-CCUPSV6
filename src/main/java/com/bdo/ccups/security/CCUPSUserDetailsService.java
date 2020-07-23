@@ -8,6 +8,7 @@ import com.bdo.ccups.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -57,11 +58,22 @@ public class CCUPSUserDetailsService implements UserDetailsService {
 
     }
 
-    public void Logout(String userName){
-        com.bdo.ccups.model.User logedInUser=userRepo.findByUserName(userName);
+    public UserDetails Logout() throws Exception{
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserDetails) {
+        
+           username = ((UserDetails)principal).getUsername();
+        
+        } else {
+        
+           username = principal.toString();
+        
+        }
+        com.bdo.ccups.model.User logedInUser=userRepo.findByUserName(username);
         logedInUser.setToken("");
         userRepo.save(logedInUser);
-
+            return  ((UserDetails)principal);
 
     }
 
