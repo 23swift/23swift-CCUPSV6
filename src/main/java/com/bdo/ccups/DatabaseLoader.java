@@ -46,7 +46,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	public void run(String... strings) throws Exception { 
 		
 		List <Role> roles= new ArrayList<Role>();
-		// roles.add(new Role("ROLE_USER","ROLE_USER" ));
+		roles.add(new Role("ROLE_USER","ROLE_USER" ));
 		roles.add(new Role("ROLE_APPROVER","ROLE_APPROVER" ));
 
 		this.userRepo.save(new  com.bdo.ccups.model.User( "a012001164","password","arnold", roles));
