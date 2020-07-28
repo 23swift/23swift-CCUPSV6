@@ -1,9 +1,11 @@
 package com.bdo.ccups.repo;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 import com.bdo.ccups.model.Application;
+import com.bdo.ccups.model.ApplicationWithInstitution;
 import com.bdo.ccups.model.Institution;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,13 +26,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 //  @PostAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
 public interface ApplicationRepository extends CrudRepository<Application,Long>{
    
-// public interface ApplicationRepository extends JpaRepository<Application,Long>{
-// @RepositoryRestResource()
-// List<Application> findAllByInstitutionName(@Param("name") String name);
 
-@PostAuthorize( "hasRole('ROLE_APPROVER')")
-// @RestResource()
-@Query("select app.cardNumber,(app.firstName ||' '|| app.lastName) as name, prod.name as product, app.referenceNo,app.status, ins.name as institutionName from Application app inner join product as prod on app.productId=prod.id inner join Institution as ins on ins.id=prod.institutionId where app.status = 'For Approval'")
-List<Application> findAllApplicationsForApproval();
+    @PostAuthorize( "hasRole('ROLE_APPROVER')")
+    @Query("select app from Application app where app.status = 'For Approval'")
+    Collection<Application> findAllApplicationsForApproval();
+
     
 }

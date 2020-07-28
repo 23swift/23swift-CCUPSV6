@@ -10,8 +10,8 @@ import org.springframework.data.rest.core.config.Projection;
 @Projection(name = "applicationWithInstitution", types = { Application.class })
 public interface ApplicationWithInstitution {
     Long getId();
-    // String  getFirst_name();
-    // String getLast_name();
+    // String  getFirstName();
+    String getLastName();
     @Value("#{target.getFirstName() + ' ' + target.getLastName()}")
     String getName();
     String getReferenceNo();
