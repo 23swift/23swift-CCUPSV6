@@ -30,26 +30,30 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final InstitutionRepository instRepo;
 	
     private final UserRepository userRepo;
-
+	private final RoleRepository roleRepository;
 
 	@Autowired 
-	public DatabaseLoader(ApplicationRepository appRepo,ProductRepository productRepo,InstitutionRepository instRepo,UserRepository userRepo) {
+	public DatabaseLoader(ApplicationRepository appRepo,ProductRepository productRepo,InstitutionRepository instRepo,UserRepository userRepo,RoleRepository roleRepository) {
 		
 		this.appRepo=appRepo;
 		this.productRepo=productRepo;
 		this.instRepo=instRepo;
 		this.userRepo=userRepo;
+		this.roleRepository=roleRepository;
 		
 	}
 
 	@Override
 	public void run(String... strings) throws Exception { 
 		
+		this.roleRepository.save(new Role("ROLE_ADMIN","ROLE_ADMIN") );
+
 		List <Role> roles= new ArrayList<Role>();
 		roles.add(new Role("ROLE_USER","ROLE_USER" ));
+		roles.add(new Role("ROLE_REQUESTOR","ROLE_REQUESTOR" ));
 		// roles.add(new Role("ROLE_APPROVER","ROLE_APPROVER" ));
 
-		this.userRepo.save(new  com.bdo.ccups.model.User( "a012001164","password","arnold", roles));
+		this.userRepo.save(new  com.bdo.ccups.model.User( "a012001164","$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6","arnold", roles));
 
 		Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
 		ArrayList<Product> prodList=new ArrayList<Product>();

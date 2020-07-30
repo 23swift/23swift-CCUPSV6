@@ -34,7 +34,9 @@ public class CCUPSUserDetailsService implements UserDetailsService {
                 authorities.add(new SimpleGrantedAuthority(item.getName()));
 
             });
-            return new User(logedInUser.getUserName(), "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
+            // return new User(logedInUser.getUserName(), "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
+            // authorities);
+            return new User(logedInUser.getUserName(), logedInUser.getPassword(),
             authorities);
         } else {
             	throw new UsernameNotFoundException("User not found with username: " + username);

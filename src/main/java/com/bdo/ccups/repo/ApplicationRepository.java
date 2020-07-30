@@ -24,6 +24,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 //  @PreAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
 //  @PostAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
+@PostAuthorize( "hasRole('ROLE_USER')")
 public interface ApplicationRepository extends CrudRepository<Application,Long>{
    
 
@@ -31,5 +32,8 @@ public interface ApplicationRepository extends CrudRepository<Application,Long>{
     @Query("select app from Application app where app.status = 'For Approval'")
     Collection<Application> findAllApplicationsForApproval();
 
+    @PostAuthorize( "hasRole('ROLE_REQUESTOR')")
+    @Query("select app from Application app where app.status = ''")
+    Collection<Application> findAllApplications();
     
 }
