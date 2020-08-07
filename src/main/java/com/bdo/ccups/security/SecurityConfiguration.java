@@ -1,5 +1,7 @@
 package com.bdo.ccups.security;
 
+import com.bdo.ccups.helpers.RoleValue;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -84,6 +86,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// dont authenticate this particular request
         .authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
+        // .antMatchers(HttpMethod.GET,"/api/**").hasRole(RoleValue.ROLE_USER)
         .antMatchers("/h2-console/**").permitAll()
         .antMatchers("/api/authenticate").permitAll().
 				// all other requests need to be authenticated

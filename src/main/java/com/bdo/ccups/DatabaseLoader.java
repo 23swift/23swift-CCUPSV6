@@ -7,6 +7,8 @@ import java.util.List;
 import com.bdo.ccups.model.Institution;
 import com.bdo.ccups.model.Product;
 import com.bdo.ccups.model.Role;
+import com.bdo.ccups.model.User;
+import com.bdo.ccups.helpers.RoleValue;
 import com.bdo.ccups.model.Application;
 import com.bdo.ccups.repo.*;
 
@@ -46,29 +48,49 @@ public class DatabaseLoader implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception { 
 		
-		this.roleRepository.save(new Role("ROLE_ADMIN","ROLE_ADMIN") );
+		Role role_user =this.roleRepository.save(new Role(RoleValue.ROLE_USER,RoleValue.ROLE_USER ));
+		Role role_admin =this.roleRepository.save(new Role(RoleValue.ROLE_ADMIN,RoleValue.ROLE_ADMIN) );
+		Role role_requestor =this.roleRepository.save(new Role(RoleValue.ROLE_REQUESTOR,RoleValue.ROLE_REQUESTOR ) );
+		Role role_approver =this.roleRepository.save(new Role(RoleValue.ROLE_APPROVER,RoleValue.ROLE_APPROVER ));
 
-		List <Role> roles= new ArrayList<Role>();
-		roles.add(new Role("ROLE_USER","ROLE_USER" ));
-		roles.add(new Role("ROLE_REQUESTOR","ROLE_REQUESTOR" ));
-		roles.add(new Role("ROLE_APPROVER","ROLE_APPROVER" ));
+		List <Role> roles1= new ArrayList<Role>();
+		roles1.add(role_user);
+		roles1.add(role_requestor);
+		// roles1.add(new Role("ROLE_APPROVER","ROLE_APPROVER" ));
+		List <Role> roles2= new ArrayList<Role>();
+		roles2.add(role_user);
+		// roles2.add(new Role("ROLE_REQUESTOR","ROLE_REQUESTOR" ));
+		roles2.add(role_approver);
 
-		this.userRepo.save(new  com.bdo.ccups.model.User( "a012001164","$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6","arnold", roles));
+		User user_requestor =this.userRepo.save(new  com.bdo.ccups.model.User( "requestor","$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6","arnold", null));
+		user_requestor.setRoles(roles1);
+		this.userRepo.save(user_requestor);
+		User user_approver=this.userRepo.save(new  com.bdo.ccups.model.User( "approver","$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6","arnold", null));
+		user_approver.setRoles(roles2);
+		this.userRepo.save( user_approver);
 
-		Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
-		ArrayList<Product> prodList=new ArrayList<Product>();
-		Product prod1=	this.productRepo.save(new Product(
-			"0001","SMART GOLD",inst
-		));
-		Product prod2=this.productRepo.save(new Product( 
-			"0002","SMART PLATINUM",inst
-		));
+		List <Role> roles3= new ArrayList<Role>();
+		roles3.add(role_user);
+		// roles3.add(new Role("ROLE_REQUESTOR","ROLE_REQUESTOR" ));
+		roles3.add(role_admin);
+		User user_admin=this.userRepo.save(new  com.bdo.ccups.model.User( "admin","$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6","arnold", null));
+		user_admin.setRoles(roles3);
+		this.userRepo.save( user_admin);
 
-		prodList.add(prod1);
-		prodList.add(prod2);
+		// Institution inst=	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
+		// ArrayList<Product> prodList=new ArrayList<Product>();
+		// Product prod1=	this.productRepo.save(new Product(
+		// 	"0001","SMART GOLD",inst
+		// ));
+		// Product prod2=this.productRepo.save(new Product( 
+		// 	"0002","SMART PLATINUM",inst
+		// ));
+
+		// prodList.add(prod1);
+		// prodList.add(prod2);
 
 
-
+	this.instRepo.save(new Institution("SMART Communications", "1000", "0000001"));
 	this.instRepo.save(new Institution("MERALCO", "1002", "0000002"));
 	this.instRepo.save(new Institution("GLOBE Telecoms", "1003", "0000003"));
 	this.instRepo.save(new Institution("PLDT", "1004", "0000004"));

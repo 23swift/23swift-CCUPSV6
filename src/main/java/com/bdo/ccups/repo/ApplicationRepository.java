@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import com.bdo.ccups.helpers.RoleValue;
 import com.bdo.ccups.model.Application;
 import com.bdo.ccups.model.ApplicationWithInstitution;
 import com.bdo.ccups.model.Institution;
@@ -24,15 +25,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 //  @PreAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
 //  @PostAuthorize( "hasAnyRole('ROLE_USER','ROLE_APPROVER')")
-@PostAuthorize( "hasRole('ROLE_USER')")
+@PostAuthorize( RoleValue.PostAuthorize_ROLE_USER)
 public interface ApplicationRepository extends CrudRepository<Application,Long>{
-   
+    
 
-    @PostAuthorize( "hasRole('ROLE_APPROVER')")
+    @PostAuthorize(RoleValue.PostAuthorize_ROLE_APPROVER)
     @Query("select app from Application app where app.status = 'For Approval'")
     Collection<Application> findAllApplicationsForApproval();
 
-    @PostAuthorize( "hasRole('ROLE_REQUESTOR')")
+    @PostAuthorize( RoleValue.PostAuthorize_ROLE_REQUESTOR)
     @Query("select app from Application app where app.status = ''")
     Collection<Application> findAllApplications();
     
